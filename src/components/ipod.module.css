@@ -1,0 +1,137 @@
+.mainDivIpod{
+    width: calc(25vw - 40px);
+    height:70vh;
+    border:15px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px rgba(233, 226, 226, 0.3);
+}
+
+
+
+
+.IpodScreen {
+    height: 50%;
+    width: 90%;
+    background-color: white;
+    margin: 1rem 0;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-image: url("https://media.istockphoto.com/id/1172427455/photo/beautiful-sunset-over-the-tropical-sea.jpg?s=612x612&w=0&k=20&c=i3R3cbE94hdu6PRWT7cQBStY_wknVzl2pFCjQppzTBg=");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.screenMainSection {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* padding: 1rem; */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.screenMainSection p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    margin:0;
+}
+
+.screenMainSection ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.screenMainSection ul li {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.screenMainSection ul li:hover {
+    background-color: #ddd;
+}
+.screenMainSection ul li.active {
+    background-color: blue;
+    color: white; 
+}
+
+
+
+
+
+.IpodButtonSection{
+    height:50%;
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonsTopMainSection{
+    width:80%;
+    height:80%;
+    background-color: white;
+    border-radius: 50%;
+}
+.menuButtonSection{
+    text-align: center;
+    /* border:1px solid; */
+}
+.menuButtonSection p{
+    margin:8px;
+    cursor:pointer;
+}
+.menuButtonSection p::before{
+    content: "Menu";    
+}
+img{
+    width:2rem;
+    height:auto;
+    cursor:pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+.nextbuttonSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor:pointer;
+}
+.centerButton{
+    height:3rem;
+    width:3rem;
+    background-color: lightgray;
+    margin:.7rem;
+    border-radius: 50%;
+    cursor:pointer;
+}
+.pauseButtonSection{
+    text-align: center;
+    margin:8px;
+    cursor:pointer;
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .mainDivIpod{
+        width: calc(30vw - 40px);
+    }
+  }
