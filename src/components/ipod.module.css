@@ -72,8 +72,20 @@
 .screenMainSection ul li.active {
     background-color: blue;
     color: white; 
+    position: relative;
 }
-
+.screenMainSection ul li.active::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px; /* Adjust the size */
+    height: 16px;
+    background-image: url("https://cdn-icons-png.flaticon.com/128/8213/8213522.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 
 

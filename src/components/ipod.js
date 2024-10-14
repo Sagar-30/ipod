@@ -1,63 +1,75 @@
 import { Component } from "react";
 import IpodStyle from "./ipod.module.css";
+import Page from "./page";
 
 export default class Ipod extends Component {
     constructor() {
         super();
         this.state = {
             activeItem: 0,
+            activePage: false
         };
-        this.isPointerActive = false; // Track if pointer is down
+        this.isPointerActive = false;
     }
 
     handleItemClick = (index) => {
-        this.setState({ activeItem: index }, () => {
+        this.setState({ activeItem: index, activePage: true }, () => {
             console.log(this.state.activeItem);
         });
+    };
+    handleMenuButton = ()=>{
+        this.setState({activePage: false });
+
     };
 
     handlePointerMove = () => {
         if (this.isPointerActive) {
             this.setState((prevState) => {
-                const nextActiveItem = (prevState.activeItem + 1) % 4; // Cycle through items
+                const nextActiveItem = (prevState.activeItem + 1) % 4;
                 return { activeItem: nextActiveItem };
             });
         }
     };
 
     handlePointerDown = () => {
-        this.isPointerActive = true; // Set pointer active
-        this.pointerMoveInterval = setInterval(this.handlePointerMove, 500); // Call move function every 100ms
+        this.isPointerActive = true; 
+        this.pointerMoveInterval = setInterval(this.handlePointerMove, 500); 
     };
 
     handlePointerUp = () => {
-        this.isPointerActive = false; // Set pointer inactive
-        clearInterval(this.pointerMoveInterval); // Clear interval
+        this.isPointerActive = false; 
+        clearInterval(this.pointerMoveInterval); 
     };
 
     componentWillUnmount() {
-        clearInterval(this.pointerMoveInterval); // Clean up on unmount
+        clearInterval(this.pointerMoveInterval);
     }
 
     render() {
         const items = ['CoverFlow', 'Music', 'Games', 'Setting'];
+        const URL = ["https://cdn-icons-png.flaticon.com/128/14563/14563910.png",
+            "", "https://cdn-icons-png.flaticon.com/128/13/13973.png",
+            "https://cdn-icons-png.flaticon.com/128/503/503849.png"
+        ]
         return (
             <div className={IpodStyle.mainDivIpod}>
                 <div className={IpodStyle.IpodScreen}>
-                    <section className={IpodStyle.screenMainSection}>
-                        <p>Ipod</p>
-                        <ul>
-                            {items.map((item, index) => (
-                                <li
-                                    key={index}
-                                    className={this.state.activeItem === index ? IpodStyle.active : ''}
-                                    onClick={() => this.handleItemClick(index)}
-                                >
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
+                    {this.state.activePage ? <Page url={URL[this.state.activeItem]} text={items[this.state.activeItem]} /> :
+                        <section className={IpodStyle.screenMainSection}>
+                            <p>Ipod</p>
+                            <ul>
+                                {items.map((item, index) => (
+                                    <li
+                                        key={index}
+                                        className={this.state.activeItem === index ? IpodStyle.active : ''}
+                                        onClick={() => this.handleItemClick(index)}
+                                    >
+                                        {item}
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    }
                 </div>
                 <div className={IpodStyle.IpodButtonSection}>
                     <div
@@ -65,7 +77,7 @@ export default class Ipod extends Component {
                         onPointerDown={this.handlePointerDown}
                         onPointerUp={this.handlePointerUp}
                     >
-                        <section className={IpodStyle.menuButtonSection}>
+                        <section className={IpodStyle.menuButtonSection} onClick={this.handleMenuButton}>
                             <p></p>
                         </section>
                         <section className={IpodStyle.nextbuttonSection}>
