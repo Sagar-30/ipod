@@ -35,7 +35,7 @@ export default class Ipod extends Component {
 
     handlePointerDown = () => {
         this.isPointerActive = true; 
-        this.pointerMoveInterval = setInterval(this.handlePointerMove, 500); 
+        this.pointerMoveInterval = setInterval(this.handlePointerMove, 700); 
     };
 
     handlePointerUp = () => {
@@ -44,7 +44,7 @@ export default class Ipod extends Component {
     };
 
     componentWillUnmount() {
-        clearInterval(this.pointerMoveInterval);
+        clearInterval(this.pointerMoveInterval); 
     }
 
     render() {
