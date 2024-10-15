@@ -21,7 +21,9 @@ export default class Ipod extends Component {
         this.setState({activePage: false });
 
     };
-
+    handleCenterBtnClick = ()=>{
+        this.setState({activePage: true });
+    }
     handlePointerMove = () => {
         if (this.isPointerActive) {
             this.setState((prevState) => {
@@ -54,7 +56,7 @@ export default class Ipod extends Component {
         return (
             <div className={IpodStyle.mainDivIpod}>
                 <div className={IpodStyle.IpodScreen}>
-                    {this.state.activePage ? <Page url={URL[this.state.activeItem]} text={items[this.state.activeItem]} /> :
+                    {this.state.activePage ? <Page url={URL[this.state.activeItem]} text={items[this.state.activeItem]} activePage={this.state.activePage}/> :
                         <section className={IpodStyle.screenMainSection}>
                             <p>Ipod</p>
                             <ul>
@@ -82,7 +84,7 @@ export default class Ipod extends Component {
                         </section>
                         <section className={IpodStyle.nextbuttonSection}>
                             <img className={IpodStyle.prevButton} src="https://cdn-icons-png.flaticon.com/128/2723/2723003.png" alt="icon" />
-                            <section className={IpodStyle.centerButton}></section>
+                            <section className={IpodStyle.centerButton} onClick={this.handleCenterBtnClick}></section>
                             <img className={IpodStyle.nextButton} src="https://cdn-icons-png.flaticon.com/128/2722/2722998.png" alt="icon" />
                         </section>
                         <section className={IpodStyle.pauseButtonSection}>
